@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "semistandard --fix \"**/*.js\"",
     "test": "npm run t test/*.test.js",
-    "deploy": "gcloud alpha functions deploy aura --source-url https://source.developers.google.com/p/project=personal-projects-1369/r/aura --source-path . --trigger-http --source-branch master --entry-point root"
+    "deploy": "gcloud alpha functions deploy aura --source-url=https://source.developers.google.com/p/personal-projects-1369/r/aura --trigger-http --source-path=/ --source-branch=master --entry-point=root --memory=128MB"
   },
   "dependencies": {
     "actions-on-google": "^1.0.0"

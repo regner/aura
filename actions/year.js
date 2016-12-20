@@ -4,8 +4,8 @@ exports.year = function year (req, res) {
   const assistant = new Assistant({request: req, response: res});
   // 1898
 
-  var currentYear = new Date().getFullYear()
-  console.log(currentYear)
+  var currentYear = new Date().getFullYear();
+  console.log(currentYear);
 
   function responseHandler (assistant) {
     assistant.tell('This was a year action...');
