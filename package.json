@@ -1,7 +1,17 @@
 {
   "name": "your-action-app",
   "version": "0.0.1",
+  "engines": {
+    "node": "~6.0"
+  },
+  "scripts": {
+    "lint": "semistandard --fix \"**/*.js\"",
+    "test": "npm run t test/*.test.js"
+  },
   "dependencies": {
     "actions-on-google": "^1.0.0"
+  },
+  "devDependencies": {
+    "semistandard": "^9.1.0"
   }
 }
