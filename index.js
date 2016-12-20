@@ -1,4 +1,4 @@
-import year from './lib/year'
+let year = require('./lib/year').year;
 
 export function root(req, res) {
   const assistant = new Assistant({request: req, response: res});
