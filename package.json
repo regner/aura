@@ -1,0 +1,7 @@
+{
+  "name": "your-action-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "actions-on-google": "^1.0.0"
+  }
+}
