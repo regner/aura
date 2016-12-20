@@ -1,4 +1,4 @@
-let year = require('./lib/year').year;
+let year = require('./actions/year').year;
 
 exports.root = function root (req, res) {
   console.log('Request headers: ' + JSON.stringify(req.headers));
