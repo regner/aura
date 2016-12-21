@@ -4,7 +4,8 @@ let request = require('request');
 const ACTION_LOGIN_COUNT = 'aura.login.count';
 const ACTION_YEAR = 'aura.year';
 const ACTION_MARKET_PRICE = 'aura.market.price';
-const ACTION_SHIT_TIER = 'aura.shit-tier-corp'
+const ACTION_SHIT_TIER = 'aura.shit-tier-corp';
+const ACTION_TIME = 'aura.time';
 
 const ARG_EVE_ITEM = 'eve-item';
 const ARG_MARKET_HUB = 'market-hub';
@@ -36,6 +37,12 @@ function shitTierCorp (assistant) {
   assistant.tell('Well that would obviously be Catastrophic Overview Failure.');
 }
 
+function time (assistant) {
+  var time = new Date().toTimeString();
+  console.log(time);
+  assistant.tell(time);
+}
+
 exports.root = function root (req, res) {
   console.log('Request headers: ' + JSON.stringify(req.headers));
   console.log('Request body: ' + JSON.stringify(req.body));
@@ -47,6 +54,7 @@ exports.root = function root (req, res) {
   actionMap.set(ACTION_LOGIN_COUNT, loginCount);
   actionMap.set(ACTION_YEAR, year);
   actionMap.set(ACTION_SHIT_TIER, shitTierCorp);
+  actionMap.set(ACTION_TIME, time);
 
   assistant.handleRequest(actionMap);
 
