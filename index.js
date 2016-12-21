@@ -38,9 +38,9 @@ function shitTierCorp (assistant) {
 }
 
 function time (assistant) {
-  var hours = new Date().getUTCHours();
+  var time = new Date().toTimeString();
   console.log(time);
-  assistant.tell(time.substring(0, time.length-15););
+  assistant.tell(time.substring(0, time.length - 15));
 }
 
 exports.root = function root (req, res) {
