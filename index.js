@@ -34,13 +34,13 @@ function marketPrice (assistant) {
   var url = 'https://esi.tech.ccp.is/latest/search/?categories=inventorytype&language=en-us&strict=false&datasource=tranquility&search=';
   var fullUrl = url + assistant.getArgument(ARG_EVE_ITEM);
 
-  request('fullUrl', function (error, response, body) {
+  request(fullUrl, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var data = JSON.parse(body);
       var typeID = data.inventorytype[0];
 
       url = 'https://esi.tech.ccp.is/latest/markets/prices/?datasource=tranquility';
-      request(fullUrl, function (error, response, body) {
+      request(url, function (error, response, body) {
         if (!error && response.statusCode === 200) {
           var data = JSON.parse(body);
           var item = _.filter(data, {'type_id': typeID});
