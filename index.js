@@ -1,5 +1,6 @@
 let Assistant = require('actions-on-google').ApiAiAssistant;
 let request = require('request');
+var _ = require('lodash');
 
 const ACTION_LOGIN_COUNT = 'aura.login.count';
 const ACTION_YEAR = 'aura.year';
@@ -30,7 +31,30 @@ function loginCount (assistant) {
 }
 
 function marketPrice (assistant) {
+  var url = 'https://esi.tech.ccp.is/latest/search/?categories=inventorytype&language=en-us&strict=false&datasource=tranquility&search=';
+  var fullUrl = url + assistant.getArgument(ARG_EVE_ITEM);
 
+  request('fullUrl', function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      var data = JSON.parse(body);
+      var typeID = data.inventorytype[0];
+
+      url = 'https://esi.tech.ccp.is/latest/markets/prices/?datasource=tranquility';
+      request(fullUrl, function (error, response, body) {
+        if (!error && response.statusCode === 200) {
+          var data = JSON.parse(body);
+          var item = _.filter(data, {'type_id': typeID});
+
+          console.log(item);
+          assistant.tell('The average price is ' + item.average_price);
+        } else {
+          assistant.tell('Sorry but it appears New Eden is dead. Please ask again later.');
+        }
+      });
+    } else {
+      assistant.tell('Sorry but it appears New Eden is dead. Please ask again later.');
+    }
+  });
 }
 
 function shitTierCorp (assistant) {
@@ -58,6 +82,7 @@ exports.root = function root (req, res) {
   actionMap.set(ACTION_YEAR, year);
   actionMap.set(ACTION_SHIT_TIER, shitTierCorp);
   actionMap.set(ACTION_TIME, time);
+  actionMap.set(ACTION_MARKET_PRICE, marketPrice);
 
   assistant.handleRequest(actionMap);
 
