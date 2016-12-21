@@ -39,8 +39,11 @@ function shitTierCorp (assistant) {
 
 function time (assistant) {
   var time = new Date().toTimeString();
-  console.log(time);
-  assistant.tell(time.substring(0, time.length - 15));
+
+  // Much shit tier JS dev
+  var cleanTime = time.substring(0, time.length - 18);
+
+  assistant.tell('It is currently ' + cleanTime);
 }
 
 exports.root = function root (req, res) {
