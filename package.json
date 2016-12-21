@@ -10,7 +10,8 @@
     "deploy": "gcloud alpha functions deploy aura --source-url=https://source.developers.google.com/p/personal-projects-1369/r/aura --trigger-http --source-path=/ --source-branch=master --entry-point=root --memory=128MB"
   },
   "dependencies": {
-    "actions-on-google": "^1.0.0"
+    "actions-on-google": "^1.0.0",
+    "request": "2.79.0"
   },
   "devDependencies": {
     "semistandard": "^9.1.0"
