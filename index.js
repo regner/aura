@@ -39,16 +39,12 @@ function marketPrice (assistant) {
       var data = JSON.parse(body);
       var typeID = data.inventorytype[0];
 
-      console.log(data);
-
       url = 'https://esi.tech.ccp.is/latest/markets/prices/?datasource=tranquility';
       request(url, function (error, response, body) {
         if (!error && response.statusCode === 200) {
           var data = JSON.parse(body);
           var item = _.filter(data, {'type_id': typeID});
 
-          console.log(data);
-          console.log(item);
           assistant.tell('The average price is ' + item[0].average_price + ' ISK.');
         } else {
           assistant.tell('Sorry but it appears New Eden is dead. Please ask again later.');
