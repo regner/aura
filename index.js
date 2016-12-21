@@ -49,7 +49,7 @@ function marketPrice (assistant) {
 
           console.log(data);
           console.log(item);
-          assistant.tell('The average price is ' + item[0].average_price);
+          assistant.tell('The average price is ' + item[0].average_price + ' ISK.');
         } else {
           assistant.tell('Sorry but it appears New Eden is dead. Please ask again later.');
         }
