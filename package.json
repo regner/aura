@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "actions-on-google": "^1.0.0",
-    "request": "2.79.0"
+    "request": "2.79.0",
+    "lodash": "4.17.2"
   },
   "devDependencies": {
     "semistandard": "^9.1.0"
