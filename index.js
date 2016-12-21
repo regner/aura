@@ -3,6 +3,10 @@ let request = require('request');
 
 const ACTION_LOGIN_COUNT = 'aura.login.count';
 const ACTION_YEAR = 'aura.year';
+const ACTION_MARKET_PRICE = 'aura.market.price';
+
+const ARG_EVE_ITEM = 'eve-item';
+const ARG_MARKET_HUB = 'market-hub';
 
 function year (assistant) {
   const baseYearSubtraction = 1898;
@@ -21,6 +25,10 @@ function loginCount (assistant) {
       assistant.tell('Sorry but it appears New Eden is dead. Please ask again later.');
     }
   });
+}
+
+function marketPrice (assistant) {
+
 }
 
 exports.root = function root (req, res) {
